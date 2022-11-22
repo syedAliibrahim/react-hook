@@ -1,3 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap');
+
+*{
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Roboto', sans-serif;
+}
+.nav{
+  background-color: rgba(18, 136, 220, 0.452);
+  padding: 10px;
+  text-align: center;
+}
+.f-div{
+  background-color: rgb(29, 105, 158);
+  width: 70%;
+  margin: auto;
+  min-height: 100vh;
+  padding: 30px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+input,textarea,button{
+  padding: 10px;
+  border: 1px solid rgb(0,0,0,0.214);
+  border-radius: 4px;
+  margin: 5px;
+  font-size: 1.2rem;
+}
+button{
+  border: none;
+  cursor: pointer;
+  background-color: rgb(218, 77, 105);
+  font-size: medium;
+}
+.task{
+  display: flex;
+  border: 1px;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  padding: 12px;
+  margin: 20px ;
+}
+.task>div{
+  width: 1000px;
+}
+.task >button{
+  border-radius: 100%;
+  width: 31px;
+  height: 31px;
+  font-size: 0.6rem;
+  background-color: rgb(61, 188, 82);
+}
+.task>button:hover{
+  background-color: rgb(216, 183, 183);
+}
+.task spam{
+  color: rgb(0, 0, 0,0.673);
+}
+
 .App {
   text-align: center;
 }

@@ -182,7 +182,7 @@ import Product from "./component/product"
 //   )
 // }
 // export default App;
-function Example() {
+// function Example() {
   // Declare a new state variable, which we'll call "count"
   // const [count, setCount] = useState(0);
   // let [text, setText] =useState('enter text here');
@@ -211,20 +211,20 @@ function Example() {
   //       Click me----
   //     </button> */}
   //   </div>
-  const[inputValue,newChangeValue] =useState("hi");
-  const xyz =(event)=>{
-    const newval=event.target.value;
-    newChangeValue(newval)
-  }
-  return(
-<div>
-  <h1>{inputValue}</h1>
-  <input type="text" value={inputValue} onChange={xyz} placeholder="check"/>
-</div>
+//   const[inputValue,newChangeValue] =useState("hi");
+//   const xyz =(event)=>{
+//     const newval=event.target.value;
+//     newChangeValue(newval)
+//   }
+//   return(
+// <div>
+//   <h1>{inputValue}</h1>
+//   <input type="text" value={inputValue} onChange={xyz} placeholder="check"/>
+// </div>
   
-  );
-}
-export default Example;
+//   );
+// }
+// export default Example;
 
 // import React from 'react'
 
@@ -235,3 +235,51 @@ export default Example;
 // }
 
 // export default App
+import React from 'react'
+import Task from "./component/task";
+
+
+function App() {
+  const [title,setTitle ]= useState("");
+  const [description,setDescription ] = useState("");
+  const [tasks,setTasks] = useState([]);
+  console.log(title,description);
+  const submitHandler =(e)=>{
+    e.preventDefault();
+    setTasks([...tasks,{title, description,}
+  ]);
+  }
+
+  const deleteTask=(index)=>{
+    const filteredArr= tasks.filter((val,i)=>{
+     return i !== index;
+    });
+    console.log(filteredArr);
+    setTasks(filteredArr);
+  }
+  return (
+    <div>
+      <div className="nav">
+        <h1>Get ready daily Goals</h1>
+      </div>
+      <div className="f-div">
+         <form onSubmit={submitHandler} className="container">
+           <input type="text" placeholder="enter your todo title" value={title} onChange={(e)=>
+            setTitle(e.target.value)} />
+           <textarea placeholder="Description"  value={description} onChange={(e)=>
+            setDescription(e.target.value)}> </textarea>
+           <button type="submit" >ADD</button>
+          </form>
+         {tasks.map((item,index)=>(
+          <Task key={index}
+           title={item.title}
+           description={item.description}
+           deleteTask={deleteTask}
+           index={index} />
+         ))}
+      </div>
+    </div>
+  )
+}
+
+export default App;
