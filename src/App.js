@@ -1,11 +1,14 @@
 // import logo from './logo.svg';
 import "./App.css";
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./component/home";
 import About from "./component/about"
 import Admin from "./component/admin"
 import Product from "./component/product"
+import header from "./component/header";
+import axios from 'axios';
+
 // import Sub from './component/subComponent';
 
 // function App() {
@@ -235,51 +238,75 @@ import Product from "./component/product"
 // }
 
 // export default App
-import React from 'react'
-import Task from "./component/task";
+// import React from 'react'
+// import Task from "./component/task";
 
 
-function App() {
-  const [title,setTitle ]= useState("");
-  const [description,setDescription ] = useState("");
-  const [tasks,setTasks] = useState([]);
-  console.log(title,description);
-  const submitHandler =(e)=>{
-    e.preventDefault();
-    setTasks([...tasks,{title, description,}
-  ]);
+// function App() {
+//   const [title,setTitle ]= useState("");
+//   const [description,setDescription ] = useState("");
+//   const [tasks,setTasks] = useState([]);
+//   console.log(title,description);
+//   const submitHandler =(e)=>{
+//     e.preventDefault();
+//     setTasks([...tasks,{title, description,}
+//   ]);
+//   }
+
+//   const deleteTask=(index)=>{
+//     const filteredArr= tasks.filter((val,i)=>{
+//      return i !== index;
+//     });
+//     console.log(filteredArr);
+//     setTasks(filteredArr);
+//   }
+//   return (
+  
+//     <div>
+//        <BrowserRouter>
+//        <div>
+//           <header/>
+//         </div>
+//        </BrowserRouter>
+//       <div className="nav">
+//         <h1>Get ready daily Goals</h1>
+//       </div>
+//       <div className="f-div">
+//          <form onSubmit={submitHandler} className="container">
+//            <input type="text" placeholder="enter your todo title" value={title} onChange={(e)=>
+//             setTitle(e.target.value)} />
+//            <textarea placeholder="Description"  value={description} onChange={(e)=>
+//             setDescription(e.target.value)}> </textarea>
+//            <button type="submit" >ADD</button>
+//           </form>
+//          {tasks.map((item,index)=>(
+//           <Task key={index}
+//            title={item.title}
+//            description={item.description}
+//            deleteTask={deleteTask}
+//            index={index} />
+//          ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default App;
+function App (){
+  const [data, setData] =useState([]);
+
+  const getNews =()=>{
+    axios.get("http://kkmkm.com/")
   }
 
-  const deleteTask=(index)=>{
-    const filteredArr= tasks.filter((val,i)=>{
-     return i !== index;
-    });
-    console.log(filteredArr);
-    setTasks(filteredArr);
-  }
-  return (
+
+  return(
     <div>
-      <div className="nav">
-        <h1>Get ready daily Goals</h1>
-      </div>
-      <div className="f-div">
-         <form onSubmit={submitHandler} className="container">
-           <input type="text" placeholder="enter your todo title" value={title} onChange={(e)=>
-            setTitle(e.target.value)} />
-           <textarea placeholder="Description"  value={description} onChange={(e)=>
-            setDescription(e.target.value)}> </textarea>
-           <button type="submit" >ADD</button>
-          </form>
-         {tasks.map((item,index)=>(
-          <Task key={index}
-           title={item.title}
-           description={item.description}
-           deleteTask={deleteTask}
-           index={index} />
-         ))}
-      </div>
+      <form onSubmit={getNews} >
+        <input type="text" placeholder="enter your city" />
+        <button type="submit">get new</button>
+      </form>
     </div>
   )
 }
-
 export default App;
